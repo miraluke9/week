@@ -26,25 +26,19 @@ for i in range(1,11):#1,21 normal
         if k in dc.keys():
             dck=float(dc[k].replace(',',''))
             if b==0:
-                b=dck
-                mn=mx=b
+                mn=mx=b=dck
                 print(k,end=" ")
             else:
-                if b>dck:
-                    print('-',end="")
-                elif b<dck:
-                    print('+',end="")
-                else:
-                    print('=',end="")
+                print('-' if b>dck else '+' if b<dck else '=',end="")
                 if dck>mx:
                     mx=dck
                 elif dck<mn:
                     mn=dck
-    rate=mx-b if mx-b>b-mn else b-mn
     print("")
     lx=[]
     ly=[]
     xx=0
+    rate=mx-b if mx-b>b-mn else b-mn
     if rate!=0:
         for j in range(0,8):#0,8 normal #0,12gd
             k=datetime.strftime(target+timedelta(days=j),'%Y/%m/%d')
